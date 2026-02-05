@@ -1,4 +1,10 @@
 # California Housing Price Prediction
+Quick access:
+- [Abstract](#abstract)
+- [How to run](#abstract)
+- [Quick Look on The Dataset](#quick-look-on-the-dataset)
+- [Comparing Models Performance](#model-performance-comparison)
+  - [Models Performance Table](#models-performance-table)
 
 ## Abstract
 This project implements linear and polynomial regression models to predict California housing prices. By comparing performance metrics across multiple degrees of complexity, I identify the optimal model for generalization.
@@ -6,6 +12,37 @@ This project implements linear and polynomial regression models to predict Calif
 - Dataset: sklearn's california_housing, [More info](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
 - Programming Language: Python
 - libraries & dependencies: scikit-learn, numpy
+
+## How to Run
+`LinearRegression.ipynb` contains the linear model, and `PolynomialRegression.ipynb` contains the polynomial model.
+
+Make sure to run all previous cells in the notebook before using the prediction snippet to ensure the model and custom functions are loaded into memory.
+
+You can change the degree of the polynomial model by changing the `DEGREE` variable in `Global Variables` Section in the notebook.
+
+There is a custom `predict` function in each notebook. To see model's predicted value for one specific sample, just add the code below at the end of the notebook (Replace the words with numbers according to your sample) :
+```
+x = np.array([MedInc, HouseAge, AveRooms, AveBedrms, Population, AveOccup, Latitude, Longitude])
+print(predict(x))
+```
+The `predict` function handles scaling and reshaping itself, just give it the raw data and you will be fine.
+
+To obtain model's predicted values for a whole dataset, save your dataset into a variable(lets say `Data`) as a numpy matrix, and then insert the code below at the end of the notebook:
+
+For polynomial regression:
+```
+Data = poly.transform(Data)
+Data = scaler.transform(Data)
+print(model.predict(Data))
+```
+
+For linear regression:
+```
+Data = scaler.transform(Data)
+print(model.predict(Data))
+```
+
+The result will be a numpy array.
 
 ## Quick Look on The Dataset
 Dataset has eight columns as independent variables and one dependent variable(price), which we are ask to predict. all values are continuous, Hence, using a regression model looks as the best idea.
@@ -22,7 +59,7 @@ For this data set, a total of four regression models were tested; A linear regre
 
 All models have been trained on the same training test(subset of the whole dataset with random_state=24), and the same test set.
 
-### Model Performance Comparison
+### Models Performance Table
 
 | Model | Linear | poly. Deg=2 | poly. Deg=3 | poly. Deg=4 |
 | :--- | :--- | :--- | :--- | :--- |
