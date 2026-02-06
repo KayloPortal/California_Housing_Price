@@ -45,7 +45,7 @@ print(model.predict(Data))
 The result will be a numpy array.
 
 ## Quick Look on The Dataset
-Dataset has eight columns as independent variables and one dependent variable(price), which we are ask to predict. all values are continuous, Hence, using a regression model looks as the best idea.
+Dataset has eight columns as independent variables and one dependent variable(price), which we are asked to predict. all values are continuous, Hence, using a regression model looks as the best idea.
 
 | Metric | Value |
 | :--- | :--- |
